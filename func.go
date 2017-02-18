@@ -1,11 +1,9 @@
 package main
 
-import (
-	. "fmt"
-)
+import . "fmt"
 
 func main() {
-  Println(f())
+	Println(f())
 
 	// can be assigned to variable
 	fn := func(x, y float64) (float64, float64) {
