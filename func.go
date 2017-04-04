@@ -16,6 +16,8 @@ func main() {
 	Println(x, y)
 
 	Println(adder())
+
+	Println(retVal())
 }
 
 func f() (s string) {
@@ -30,4 +32,8 @@ func adder() func(int) int {
 		sum += x
 		return sum
 	}
+}
+
+func retVal() (s1, s2, s3 string) {
+	return "a", "b", "c"
 }

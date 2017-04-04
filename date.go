@@ -1,12 +1,14 @@
 package main
 
 import (
-	"time"
 	. "fmt"
+	"time"
 )
 
 const (
 	monthToMillisec = 2592000
+	location        = "Asia/Tokyo"
+	timezone        = 9 * 60 * 60
 )
 
 func main() {
@@ -52,13 +54,15 @@ func main() {
 	Println("fromLoc", fromLoc)
 	Println("toLoc", toLoc)
 	Println("fromLoc.Unix()", fromLoc.Unix()) // 1472688000
-	Println("toLoc.Unix()", toLoc.Unix()) // 1475280000
+	Println("toLoc.Unix()", toLoc.Unix())     // 1475280000
 
-	Println("diffLoc", toLoc.Unix() - fromLoc.Unix()) // 2592000
+	Println("diffLoc", toLoc.Unix()-fromLoc.Unix()) // 2592000
 	//fromTime := time.Unix(from, 0).In(location)
 	//toTime := time.Unix(to, 0).In(location)
 	diffMonth := diffMonth(toLoc, fromLoc)
 	Println("diffMonth:", diffMonth)
+
+	newDate()
 }
 
 // In consideration of exceeding years,
@@ -72,4 +76,11 @@ func diffMonth(expiresTime, createdTime time.Time) int {
 func diffMonthBad(expiresTime, createdTime time.Time) int {
 	diffYear := expiresTime.Year() - createdTime.Year()
 	return 12*diffYear + int(expiresTime.Month()) - int(createdTime.Month())
+}
+
+func newDate() time.Time {
+	zone := time.FixedZone(location, timezone)
+	day20160101 := time.Date(2016, 1, 1, 0, 0, 0, 0, zone)
+	Println(day20160101.Unix())
+	return day20160101
 }

@@ -1,9 +1,9 @@
 package main
 
 import (
+	"bytes"
 	. "fmt"
 	"strconv"
-	"bytes"
 )
 
 type Vertex struct {
@@ -14,19 +14,21 @@ type Vertex struct {
 func main() {
 	var m = map[string]int{
 		"Bell Labs": 1,
-		"Google": 2,
+		"Google":    2,
+		"":          3,
 	}
-	Println(m) // map[Bell Labs:1 Google:2]
-
+	Println(m)              // map[Bell Labs:1 Google:2 :3]
 	Println(m["Bell Labs"]) // 1
+	Println(m[""])          // 3
 
-	delete(m, "Google")
-
-	Println(m) // map[Bell Labs:1]
+	Println(m) // map[Bell Labs:1 :3]
 
 	// キーの有無✔
-	str, ok := m["Bell Labs"]
-	Println(str, ok) // 1 true
+	num, ok := m["Bell Labs"]
+	Println(num, ok) // 1 true
+
+	num, ok = m["hoge"]
+	Println(num, ok) // 0 false
 
 	int := 0
 	Println("fill前：", strconv.Itoa(int))
@@ -47,7 +49,7 @@ func main() {
 	var buf1, buf2 *bytes.Buffer
 	buf1 = bytes.NewBufferString("")
 	buf2 = bytes.NewBufferString("")
-	var bufMap = map[string]*bytes.Buffer{"buf1":buf1, "buf2":buf2}
+	var bufMap = map[string]*bytes.Buffer{"buf1": buf1, "buf2": buf2}
 
 	fillBufMap(&int, bufMap)
 	Println("fillBufMap後：", bufMap)

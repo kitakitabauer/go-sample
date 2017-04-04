@@ -1,0 +1,17 @@
+hash: b6abc8d9093461c6fd5551fd092a28c395f7c5f24fda05d36bbeef18aba6ac83
+updated: 2016-11-10T17:19:47.989985168+09:00
+imports:
+- name: github.com/kr/pretty
+  version: cfb55aafdaf3ec08f0db22699ab822c50091b1c4
+  repo: https://github.com/kr/pretty
+- name: github.com/kr/text
+  version: 7cafcd837844e784b526369c9bce262804aebc60
+- name: github.com/tj/go-debug
+  version: ff4a55a20a86994118644bbddc6a216da193cc13
+- name: github.com/y0ssar1an/q
+  version: 2db904a96a52a061170a3c0d8db384d388315af6
+- name: gopkg.in/mgo.v2
+  version: 3f83fa5005286a7fe593b055f0d7771a7dce4655
+  subpackages:
+  - bson
+testImports: []
