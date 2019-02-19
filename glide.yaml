@@ -7,3 +7,6 @@ import:
 - package: gopkg.in/mgo.v2
   subpackages:
   - bson
+- package: github.com/deckarep/golang-set
+  version: ^1.6.0
+- package: github.com/jinzhu/now

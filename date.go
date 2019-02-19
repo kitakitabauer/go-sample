@@ -9,6 +9,9 @@ const (
 	monthToMillisec = 2592000
 	location        = "Asia/Tokyo"
 	timezone        = 9 * 60 * 60
+	dateFormat      = "2006-01-02"
+	dateTimeFormat  = "2006-01-02 15:04:05"
+	targetDayStr    = "2016-10-19"
 )
 
 func main() {
@@ -20,8 +23,7 @@ func main() {
 	Println(n.Location())
 	Println(n.MarshalJSON())
 
-	dateFormat := "2006-01-02"
-	targetDayStr := "2016-10-19"
+	checkAddDate()
 
 	parseDate, err := time.Parse(dateFormat, targetDayStr)
 	if err != nil {
@@ -83,4 +85,31 @@ func newDate() time.Time {
 	day20160101 := time.Date(2016, 1, 1, 0, 0, 0, 0, zone)
 	Println(day20160101.Unix())
 	return day20160101
+}
+
+func checkAddDate() {
+	date := time.Date(2017, time.March, 28, 12, 0, 0, 0, time.FixedZone(location, timezone))
+	Println(date.Format(dateTimeFormat))                    // 2017-03-28 12:00:00
+	Println(date.AddDate(0, -1, 0).Format(dateTimeFormat))  // 2017-02-28 12:00:00
+	Println(date.AddDate(0, 0, -30).Format(dateTimeFormat)) // 2017-02-26 12:00:00
+
+	date = time.Date(2017, time.March, 29, 12, 0, 0, 0, time.FixedZone(location, timezone))
+	Println(date.Format(dateTimeFormat))                    // 2017-03-29 12:00:00
+	Println(date.AddDate(0, -1, 0).Format(dateTimeFormat))  // 2017-03-01 12:00:00
+	Println(date.AddDate(0, 0, -30).Format(dateTimeFormat)) // 2017-02-27 12:00:00
+
+	date = time.Date(2017, time.May, 31, 12, 0, 0, 0, time.FixedZone(location, timezone))
+	Println(date.Format(dateTimeFormat))                    // 2017-05-31 12:00:00
+	Println(date.AddDate(0, -1, 0).Format(dateTimeFormat))  // 2017-05-01 12:00:00
+	Println(date.AddDate(0, 0, -30).Format(dateTimeFormat)) // 2017-05-01 12:00:00
+
+	date = time.Date(2017, time.July, 1, 12, 0, 0, 0, time.FixedZone(location, timezone))
+	Println(date.Format(dateTimeFormat))                    // 2017-07-01 12:00:00
+	Println(date.AddDate(0, -1, 0).Format(dateTimeFormat))  // 2017-06-01 12:00:00
+	Println(date.AddDate(0, 0, -30).Format(dateTimeFormat)) // 2017-06-01 12:00:00
+	Println(date.AddDate(0, 0, -31).Format(dateTimeFormat)) // 2017-05-31 12:00:00
+	Println(date.AddDate(0, 0, -32).Format(dateTimeFormat)) // 2017-05-30 12:00:00
+
+	date = time.Date(2017, time.January, 0, 23, 59, 59, 999999999, time.FixedZone(location, timezone))
+	Println(date.Format(dateTimeFormat)) // 2016-12-31 23:59:59
 }

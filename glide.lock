@@ -1,17 +1,40 @@
-hash: b6abc8d9093461c6fd5551fd092a28c395f7c5f24fda05d36bbeef18aba6ac83
-updated: 2016-11-10T17:19:47.989985168+09:00
+hash: c8fd5de2028143cec91120da4e729349b402733c562d54c888360ad2fe207d8f
+updated: 2017-05-31T14:53:54.059330918+09:00
 imports:
+- name: github.com/deckarep/golang-set
+  version: fc8930a5e645572ee00bf66358ed3414f3c13b90
+- name: github.com/dogenzaka/go-iap
+  version: 3890ed82ea3d869faff27ca03ccf914918ca696a
+  subpackages:
+  - appstore
+- name: github.com/dogenzaka/tsv
+  version: 8e02e611b1fb06f657b075f37e8770db156a101a
+- name: github.com/jinzhu/now
+  version: d939ba741945c047cac69c329c5fb0d6b4a06520
 - name: github.com/kr/pretty
   version: cfb55aafdaf3ec08f0db22699ab822c50091b1c4
-  repo: https://github.com/kr/pretty
 - name: github.com/kr/text
   version: 7cafcd837844e784b526369c9bce262804aebc60
+- name: github.com/moul/http2curl
+  version: b1479103caacaa39319f75e7f57fc545287fca0d
+- name: github.com/parnurzeal/gorequest
+  version: c4a74a6708c98dafe692472ca01d6390d6d2ab4e
 - name: github.com/tj/go-debug
   version: ff4a55a20a86994118644bbddc6a216da193cc13
 - name: github.com/y0ssar1an/q
-  version: 2db904a96a52a061170a3c0d8db384d388315af6
+  version: 392ac3089fcf8c70ebbe85f4c29778b7ebe27a9f
+- name: golang.org/x/net
+  version: f315505cf3349909cdf013ea56690da34e96a451
+  subpackages:
+  - publicsuffix
+- name: golang.org/x/text
+  version: a7c023693a94aedd6b6df43ae7526bfe9d2b7d22
+  subpackages:
+  - transform
+  - unicode/norm
 - name: gopkg.in/mgo.v2
   version: 3f83fa5005286a7fe593b055f0d7771a7dce4655
   subpackages:
   - bson
+  - internal/json
 testImports: []

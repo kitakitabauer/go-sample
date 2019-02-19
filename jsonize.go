@@ -29,4 +29,24 @@ func main() {
 
 	jsonstring := string(bytes)
 	fmt.Println(jsonstring)
+
+	parse()
+}
+
+type Hoge struct {
+	Code  string `json:"code"`
+	Error string `json:"error"`
+}
+
+func parse() {
+	str := `{"code": "202", "error": "hoge"}`
+	hoge := struct {
+		Code  string `json:"code"`
+		Error string `json:"error"`
+	}{}
+	//var hoge Hoge
+	err := json.Unmarshal([]byte(str), &hoge)
+	fmt.Printf("%#v\n", err)
+	fmt.Printf("%#v", hoge)
+	return
 }
