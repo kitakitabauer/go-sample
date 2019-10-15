@@ -1,7 +1,7 @@
 package main
 
 import (
-	debug "github.com/tj/go-debug"
+	debug "github.com/visionmedia/go-debug"
 	"os"
 	"fmt"
 )
